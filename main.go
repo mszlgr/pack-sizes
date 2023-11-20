@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"pack-sizes/cmd"
+)
 
 func main() {
-	fmt.Println("hello world")
+	cmd.Start()
 }

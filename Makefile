@@ -3,7 +3,7 @@ APP_SRC = $(shell go list -f '{{range $$_, $$f := .GoFiles}}{{$$.Dir}}/{{$$f}}{{
 SRC = go.mod go.sum $(shell find . -name '*.go')
 
 APP_NAME = main
-BUILD_CMD = go build ./...
+BUILD_CMD = go build
 
 all: build
 
