@@ -58,7 +58,7 @@ func TestDynamic(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		ret := Dynamic(c.orders, c.packSizes, c.depth)
+		ret := Dynamic(c.orders, c.packSizes, Options{Depth: c.depth})
 		if !reflect.DeepEqual(ret, c.expected) {
 			t.Errorf("in test: %s, expected %+v, got %+v", c.name, c.expected, ret)
 		}

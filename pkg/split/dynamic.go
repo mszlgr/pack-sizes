@@ -1,9 +1,5 @@
 package split
 
-import (
-	"fmt"
-)
-
 type dynamicSolution struct {
 	split     map[int]int
 	bucketCnt int
@@ -56,7 +52,7 @@ func filterOneMinBuckets(solutions []dynamicSolution) dynamicSolution {
 	return filtered
 }
 
-func Dynamic(order int, bucketsArg []int, depth int) map[int]int {
+func Dynamic(order int, bucketsArg []int, opt Options) map[int]int {
 	if order == 0 {
 		return make(map[int]int)
 	}
@@ -64,10 +60,7 @@ func Dynamic(order int, bucketsArg []int, depth int) map[int]int {
 	buckets := make([]int, len(bucketsArg))
 	copy(buckets, bucketsArg)
 
-	solutions := dynamic(order, bucketsArg, dynamicSolution{}, depth)
-
-	fmt.Printf("%v\n", len(solutions))
-
+	solutions := dynamic(order, bucketsArg, dynamicSolution{}, opt.Depth)
 	minOver := filterMinOverflow(solutions)
 
 	return filterOneMinBuckets(minOver).split

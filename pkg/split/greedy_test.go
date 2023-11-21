@@ -57,7 +57,7 @@ func TestGreedy(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		ret := Greedy(c.orders, c.packSizes)
+		ret := Greedy(c.orders, c.packSizes, Options{})
 		if !reflect.DeepEqual(ret, c.expected) {
 			t.Errorf("in test: %s, expected %+v, got %+v", c.name, c.expected, ret)
 		}

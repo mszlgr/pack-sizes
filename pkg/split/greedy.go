@@ -4,7 +4,7 @@ import (
 	"sort"
 )
 
-func Greedy(order int, bucketsArg []int) map[int]int {
+func Greedy(order int, bucketsArg []int, _ Options) map[int]int {
 	segments := make(map[int]int)
 	buckets := make([]int, len(bucketsArg))
 	copy(buckets, bucketsArg)
