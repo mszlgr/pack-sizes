@@ -5,7 +5,6 @@ make
 make test
 ./pack-sizes
 ```
-
 other shells session:
 ```
 curl -s "localhost:12345/split?orders=12001" | jq .
@@ -28,3 +27,14 @@ curl -s "localhost:12345/split?orders=12001" | jq .
 # implementation
 Implements two [change-making algorithms](https://en.wikipedia.org/wiki/Change-making_problem) - greedy and dymamic, uses first by default due to performance 
 reasons.
+
+# start as container
+```
+make docker-run
+```
+
+# build as container
+```
+make docker-build version=1.0.1
+```
+

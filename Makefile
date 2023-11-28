@@ -2,7 +2,7 @@
 APP_SRC = $(shell go list -f '{{range $$_, $$f := .GoFiles}}{{$$.Dir}}/{{$$f}}{{"\n"}}{{end}}' ./... | sed -e s,$$(pwd)/,, | grep -v "^gen/")
 SRC = go.mod go.sum $(shell find . -name '*.go')
 
-APP_NAME = main
+APP_NAME = pack-sizes
 BUILD_CMD = go build
 
 all: build
@@ -31,3 +31,12 @@ clean:
 
 go.sum: go.mod
 	@ go mod download
+
+docker-build:
+	@ docker build . -t $(APP_NAME):$(version)
+
+docker-build-dev:
+	@ docker build . -t $(APP_NAME):dev
+
+docker-run: docker-build-dev
+	@ docker run -e APP_HOST=0.0.0.0 -p 12345:12345 $(APP_NAME):dev
