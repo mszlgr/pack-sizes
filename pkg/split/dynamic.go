@@ -41,6 +41,9 @@ func filterMinOverflow(solutions []dynamicSolution) []dynamicSolution {
 }
 
 func filterOneMinBuckets(solutions []dynamicSolution) dynamicSolution {
+        if len(solutions) == 0 {
+		return dynamicSolution{}
+	}
 	var filtered dynamicSolution
 	minBuckets := solutions[0].bucketCnt
 	for _, solution := range solutions {

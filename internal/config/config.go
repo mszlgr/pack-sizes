@@ -46,9 +46,10 @@ func Get() Config {
 		}
 	}
 	if os.Getenv(envHost) != "" {
-		c.Host = os.Getenv(envPort)
+		c.Host = os.Getenv(envHost)
 	}
 	if os.Getenv(envBuckets) != "" {
+		c.Buckets = make([]int, 0)
 		bucketsStr := os.Getenv(envBuckets)
 		for _, e := range strings.Split(bucketsStr, envBucketsSeparator) {
 			bucket, err := strconv.Atoi(e)
@@ -58,7 +59,6 @@ func Get() Config {
 			}
 			c.Buckets = append(c.Buckets, bucket)
 		}
-		c.Host = os.Getenv(envBuckets)
 	}
 	if os.Getenv(envDynamicDepth) != "" {
 		depthStr := os.Getenv(envDynamicDepth)
